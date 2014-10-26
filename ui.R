@@ -1,6 +1,7 @@
 # shiny ui
 library(shiny)
-
+library(rCharts)
+source("helpers.R")
 shinyUI(fluidPage(
         titlePanel(h1("The Brooklyn Nets Performance by Game")),
         sidebarLayout(
@@ -18,7 +19,7 @@ shinyUI(fluidPage(
                         textOutput("text1")
                         ),
         mainPanel(
-                showOutput("chart", "Morris")
+                showOutput("chart", "morris")
                 ))
 
         ))

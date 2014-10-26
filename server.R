@@ -1,9 +1,10 @@
 # shiny server
 library(shiny)
 library(rCharts)
-load("./data/nets.Rda")
-
+library(reshape2)
+source("helpers.R")
 shinyServer(function(input, output) {
+
         dataInput <- reactive({
                 subset(nets, Season == input$Season)
         })
@@ -14,9 +15,10 @@ shinyServer(function(input, output) {
         })
         output$text1 <- renderText({
                 #"This is Text"
+                data <- dataInput()
                 paste("During the", input$Season, "season, the Nets averaged", 
-                      round(mean(dataInput()$Nets),1), "points per game. Their opponents averaged",
-                      round(mean(dataInput()$Opp),1), "points.")
+                      round(mean(data$Nets),1), "points per game. Their opponents averaged",
+                      round(mean(data$Opp),1), "points.")
                 
         })
 })
