@@ -15,7 +15,8 @@ shinyServer(function(input, output) {
         output$text1 <- renderText({
                 #"This is Text"
                 paste("During the", input$Season, "season, the Nets averaged", 
-                      round(mean(dataInput()$Nets),1), "points per game.")
+                      round(mean(dataInput()$Nets),1), "points per game. Their opponents averaged",
+                      round(mean(dataInput()$Opp),1), "points.")
                 
         })
 })
